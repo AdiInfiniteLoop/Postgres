@@ -6,14 +6,18 @@ import (
 )
 
 func main() {
-	err := db.DBConnection()
+	//defer an anonymous function
+	defer func() {
+		err := db.CloseDatabaseConnection()
+		if err != nil {
+			log.Fatal("Cannot Close", err)
+		}
+	}()
+
+	err := db.OpenPostgresConnection()
 	if err != nil {
-		log.Println("Cannot Connect", err)
+		log.Fatal("Cannot Connect", err)
 	}
 	Connect()
 
-	err = db.DBClose()
-	if err != nil {
-		log.Println("Cannot Close", err)
-	}
 }

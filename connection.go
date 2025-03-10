@@ -33,3 +33,10 @@ func Connect() {
 		log.Println("Error Occurred", err)
 	}
 }
+
+/*
+TL;DR
+Creating (&) → server := &http.Server{} (Creates a struct and returns a pointer).
+Passing (&) → updateConfig(&cfg) (Pass address to modify inside a function).
+Modifying (*) → *ptr = newValue (Modify value at pointer location).
+*/
