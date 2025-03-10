@@ -6,6 +6,6 @@ services:
     environment:
       POSTGRES_USER: adiinfiniteloop
       POSTGRES_PASSWORD: mysecretpassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_DB: newdatabase
     ports:
       - "5432:5432"
