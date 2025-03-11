@@ -19,6 +19,7 @@ func OpenPostgresConnection() error {
 
 	var err error
 	//DB, err = sql.Open("postgres", "postgres://adiinfiniteloop:mysecretpassword@localhost:5432/mydatabase")
+
 	conn, err := pgx.Connect(ctx, "postgres://adiinfiniteloop:mysecretpassword@localhost:5432/newdatabase")
 
 	defer func(conn *pgx.Conn, ctx context.Context) {
@@ -26,7 +27,8 @@ func OpenPostgresConnection() error {
 		if err != nil {
 			log.Fatal("Database Connection Error", err)
 		}
-	}(conn, context.Background())
+	}(conn, ctx)
+
 	if err != nil {
 		return err
 	}
